@@ -88,11 +88,12 @@ Tanggal          : 06 April 2026
 Pilih satu paper riset di bidang TI yang mengklaim "metode X meningkatkan performa." Telusuri setiap tahap Research Trust Model.
 
 **Paper yang dipilih:**
-> Judul: Analisis Perbandingan Metode Autentikasi pada Mobile Banking menggunakan Usability Testing dan User Experience Questionnaire (UEQ) (Studi pada BTN Mobile dan Livin' by Mandiri)
+> Judul: Analisis Perbandingan Metode Autentikasi pada Mobile Banking menggunakan Usability Testing dan User Experience Questionnaire (UEQ) (Studi pada BTN Mobile dan Livin' by Mandiri)  
 > Penulis (Tahun): Gusti Agzalia, Aryo Pinandito, & Hanifah Muslimah Az-Zahra (2023)
+
 | Tahap | Apa yang Dilakukan | Potensi Distorsi |
-|-------|-------------------|-----------------|
-| Reality → Data | *Mengumpulkan data waktu dan jumlah klik dari 11 partisipan saat melakukan transfer. | Sampling Bias: Jumlah partisipan (11 orang) terlalu kecil untuk mewakili profil jutaan nasabah bank yang beragam usia dan literasi digitalnya. |
+|-------|-------------------|------------------|
+| Reality → Data | Mengumpulkan data waktu dan jumlah klik dari 11 partisipan saat melakukan transfer. | Sampling Bias: Jumlah partisipan (11 orang) terlalu kecil untuk mewakili profil jutaan nasabah bank yang beragam usia dan literasi digitalnya. |
 | Data → Processing | Membersihkan data dan melakukan uji normalitas Shapiro-Wilk pada hasil rekaman. | Measurement Bias: Kesalahan manual saat menekan stopwatch atau menghitung jumlah klik selama proses pengujian skenario berlangsung. |
 | Processing → Analysis | Mengolah data menggunakan uji-t sampel independen untuk membandingkan rata-rata skor. | Confounding Variable: Adanya variabel pengganggu seperti biaya SMS Rp500 pada BTN yang bisa merusak objektivitas penilaian partisipan terhadap "efisiensi" sistem. |
 | Analysis → Inference | Menyimpulkan bahwa metode PIN lebih efisien dan memberikan impresi lebih baik daripada mToken. | Confirmation Bias: Peneliti mungkin cenderung mengunggulkan metode PIN karena secara umum memang lebih modern, sehingga mengabaikan aspek keamanan yang mungkin lebih kuat di mToken. |
@@ -111,14 +112,15 @@ Pilih satu paper riset di bidang TI yang mengklaim "metode X meningkatkan perfor
 Skenario: Seorang peneliti menemukan bahwa jika 3 data point outlier dihapus, hasil eksperimennya menjadi signifikan. Dengan outlier, hasilnya tidak signifikan.
 
 | Perspektif | Analisis |
-|------------|---------|
+|------------|----------|
 | Kejujuran ilmiah | Melaporkan kedua versi (dengan dan tanpa outlier). Menghapus data hanya agar hasil terlihat "bagus" atau signifikan tanpa alasan teknis yang jelas adalah bentuk devaluasi kebenaran. |
 | Transparansi | Peneliti wajib menjelaskan alasan mengapa 3 data tersebut dianggap outlier (misal: karena error sistem atau gangguan teknis). Metode pembersihan data harus dituliskan secara detail di bagian metodologi agar pembaca tahu prosesnya. |
 | Peer review | Dengan bersikap jujur, penelaah (reviewer) dapat memberikan masukan apakah penghapusan tersebut sah secara statistik atau justru indikasi bahwa metode yang diuji memang tidak stabil. |
 
 **Keputusan akhir dan justifikasi:**
-> Keputusan: Tetap menyertakan seluruh data dalam laporan, namun memberikan analisis tambahan pada hasil setelah outlier dihapus dengan penjelasan medis/teknis yang mendasari penghapusan tersebut.
+> Keputusan: Tetap menyertakan seluruh data dalam laporan, namun memberikan analisis tambahan pada hasil setelah outlier dihapus dengan penjelasan medis/teknis yang mendasari penghapusan tersebut.  
 > Justifikasi: Dalam riset TI, integritas data lebih utama daripada hasil yang signifikan. Menghapus outlier tanpa transparansi termasuk dalam kategori manipulasi data. Jika outlier tersebut memang disebabkan oleh anomali teknis (bukan perilaku pengguna asli), maka penghapusan boleh dilakukan asalkan dideklarasikan secara terbuka agar tidak menyesatkan peneliti selanjutnya.
+
 ---
 
 ## Latihan 3 — Posisi Paradigma
@@ -131,7 +133,7 @@ Skenario: Seorang peneliti menemukan bahwa jika 3 data point outlier dihapus, ha
 | Jenis data yang dikumpulkan | Data kuantitatif (detik waktu, jumlah klik, skor skala likert UEQ). | Data kualitatif (opini personal, perasaan pengguna secara mendalam). | Data pengujian artefak (prototipe desain atau fitur autentikasi baru). |
 | Limitasi paradigma | Cenderung mengabaikan konteks emosional pengguna yang lebih luas di luar angka. | Hasil sangat subjektif dan sulit untuk digeneralisasi ke populasi besar. | Fokus pada fungsionalitas sistem, terkadang kurang mengevaluasi aspek sosial. |
 
-**Paradigma yang dipilih:** Positivis (didukung oleh kerangka evaluasi Design Science).
+**Paradigma yang dipilih:** Positivis (didukung oleh kerangka evaluasi Design Science).  
 **Alasan:** Riset ini berfokus pada pengukuran fenomena secara objektif menggunakan standar yang baku (UEQ dan Usability Testing). Tujuan utamanya adalah untuk menguji hipotesis melalui angka dan statistik guna menarik kesimpulan yang tidak bias mengenai efisiensi sistem.
 
 ---

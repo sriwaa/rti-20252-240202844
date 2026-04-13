@@ -61,39 +61,45 @@ Membandingkan deep learning 2024 dengan decision tree sederhana tanpa justifikas
 ```
 LITERATURE MAPPING
 
-Topik      : ____________________
-Database   : ____________________
-Query      : ____________________
-Tahun      : ____________________
-Hasil awal : ____ paper → Screening → ____ paper final
+Topik      : Analisis Komparatif Efisiensi UX pada Aplikasi DANA (Super App) dan GoPay (Stand-alone App).
+Database   : Google Scholar
+Query      : "Usability DANA GoPay", "Evaluasi UEQ DANA", "SUS GoPay", "Heuristic Evaluation E-wallet Indonesia". 
+Tahun      : 2024 – 2026.
+Hasil awal : 15 paper → Screening → 5 paper final
 
 Literature Matrix (concept-centric):
 
 | Study | Tahun | Method | Data | Result | Limitation |
 |-------|-------|--------|------|--------|------------|
-|       |       |        |      |        |            |
+| M. Naufal | 2024 | UEQ | 30 User DANA  | DANA dinilai "Sangat Baik" secara subjektif. |  Tidak ada pengukuran waktu teknis (time-on-task). |
+| P. Sa’adah et al. | 2024 | SUS | 100 User GoPay  | Skor SUS 70,15 (Grade C/Good). |  Fokus pada kegunaan umum, bukan kecepatan transaksi. |
+| N.I. Rosyidah | 2026 | Heuristic Eval | 3 Expert Evaluator  | GoPay unggul tipis; DANA lebih informatif. |  Berdasarkan opini ahli, bukan performa real user. |
+| Y.E. Achyani | 2024 | Usability (Nielsen) | 150 Responden  | Skor: ShopeePay > GoPay > DANA. |  Data berupa persentase kuesioner, bukan satuan detik. |
+| Angga Permana | 2025 | UEQ (Comparative) | 45 Responden  | GoPay lebih efisien dibanding DANA & OVO. |  Belum ada pembuktian fisik menggunakan stopwatch. |
+
 
 Pola yang ditemukan:
-  Metode dominan     : ____________________
-  Dataset umum       : ____________________
-  Limitasi berulang  : ____________________
+  Metode dominan     : Penggunaan kuesioner persepsi (SUS dan UEQ).
+  Dataset umum       : Pengguna aktif e-wallet di kalangan mahasiswa dan masyarakat urban.
+  Limitasi berulang  : Seluruh literatur masih bergantung pada data subjektif (apa yang dirasakan pengguna). Belum ada yang menggunakan metrik performa objektif (durasi waktu nyata).
 
 GAP IDENTIFICATION
 
-Gap 1: [Jenis: performance / method / data / context]
-  Deskripsi    : ____________________
-  Bukti        : ____________________
-  Signifikansi : ____________________
+Gap 1: [Jenis: Method Gap]
+  Deskripsi    : Penelitian mengenai efisiensi e-wallet saat ini hampir seluruhnya menggunakan metode berbasis persepsi (kuesioner UEQ/SUS), bukan pengukuran performa teknis secara langsung.
+  Bukti        : Jurnal Muthi Naufal (2024), Angga Permana (2025), dan Achyani (2024) semuanya menggunakan kuesioner untuk mengukur "Efisiensi", sehingga hasilnya adalah opini pengguna, bukan data durasi waktu (detik) yang objektif.
+  Signifikansi : Dengan menggunakan metode observasi langsung (stopwatch), hasil riset akan jauh lebih akurat secara saintifik dalam menentukan aplikasi mana yang paling cepat untuk transaksi.
 
-Gap 2: [Jenis: ____]
-  Deskripsi    : ____________________
-  Bukti        : ____________________
-  Signifikansi : ____________________
+Gap 2: [Jenis: Context Gap]
+  Deskripsi    : Masih jarangnya perbandingan langsung antara aplikasi dompet digital dengan model bisnis yang berbeda (Super App vs Stand-alone App) dalam satu pengujian performa yang sama.
+  Bukti        : Jurnal Rosyidah (2026) membandingkan DANA dan GoPay melalui Heuristic Evaluation (evaluasi ahli), namun belum ada yang menguji perbedaan performa keduanya ketika GoPay sudah resmi menjadi aplikasi terpisah (stand-alone).
+  Signifikansi : Riset ini akan memberikan pandangan baru apakah pemisahan aplikasi (unbundling) benar-benar meningkatkan efisiensi pengguna secara signifikan atau tidak.
 
 Baseline Selection:
 | Baseline | Relevansi | Representatif | Source |
 |----------|-----------|---------------|--------|
-|          |           |               |        |
+| Metode UEQ (Skala Efisiensi) | Menjadi tolok ukur hasil efisiensi berdasarkan "perasaan" pengguna. | Metode paling standar dalam evaluasi UX e-wallet (dipakai di 3 dari 5 jurnal). | Angga Permana (2025) & Muthi Naufal (2024) |
+| 5 Komponen Usability Nielsen |  Memberikan definisi operasional tentang Efficiency dalam riset dompet digital.  |  Mewakili standar Common Practice dalam Ilmu Komputer (HCI).  | Yuni Eka Achyani (2024) |
 ```
 
 ---
@@ -102,20 +108,21 @@ Baseline Selection:
 
 Gunakan topik riset dari WS-02. Cari minimal 5 paper relevan menggunakan Google Scholar atau database lain.
 
-**Topik riset:** ________________________________________
-**Query pencarian:** ____________________________________
-**Database:** ___________________________________________
+**Topik riset:** Analisis Komparatif Efisiensi UX pada Aplikasi DANA (Super App) dan GoPay (Stand-alone App)
+**Query pencarian:** "Usability DANA GoPay", "Evaluasi UEQ DANA", "SUS GoPay", "Heuristic Evaluation E-wallet Indonesia"
+**Database:** Google Scholar
 
 | # | Study | Tahun | Method | Dataset | Result | Limitasi |
 |---|-------|-------|--------|---------|--------|----------|
-| 1 | *Contoh: Rahman et al.* | *2023* | *CNN* | *ImageNet subset* | *Acc 91%* | *Hanya 3 kelas* |
-| 2 | | | | | | |
-| 3 | | | | | | |
-| 4 | | | | | | |
-| 5 | | | | | | |
+| 1 | Muthi Naufal | 2024 | UEQ (User Experience Questionnaire) | 30 Mahasiswa pengguna DANA | Aspek efisiensi DANA dinilai "Sangat Baik" dengan skor 2,29. | Data bersifat subjektif (persepsi), tidak ada pengukuran waktu teknis. |
+| 2 | Puji Sa'adah et al. | 2024 | SUS (System Usability Scale) | 100 Responden pengguna GoPay | Skor SUS 70,15 (Kategori Good/Acceptable). | Tidak membandingkan secara langsung dengan aplikasi kompetitor. |
+| 3 | N. I. Rosyidah | 2026 | Heuristic Evaluation | 3 Expert Evaluator (Ahli) | GoPay unggul pada efisiensi fitur; DANA lebih informatif. | Penilaian berdasarkan sudut pandang ahli, bukan performa user asli. |
+| 4 | Y. E. Achyani | 2024 | Usability Testing (Nielsen Model) | 150 Responden (ShopeePay, GoPay, DANA) | Skor GoPay (83,5%) sedikit lebih tinggi dibanding DANA (82,1%). | Masih menggunakan skala Likert, bukan durasi waktu nyata (detik). |
+| 5 | Angga Permana | 2025 | UEQ (Comparative Study) | 45 Pengguna aktif e-wallet | GoPay dinilai lebih efisien dibandingkan DANA dan OVO. | Tidak dilakukan observasi stopwatch terhadap jumlah klik/langkah. |
 
-**Pola yang terlihat — Metode dominan:** ___________________
-**Limitasi yang berulang:** ______________________________
+**Pola yang terlihat — Metode dominan:** Penggunaan kuesioner evaluasi standar seperti UEQ (User Experience Questionnaire) dan SUS (System Usability Scale) untuk mengukur persepsi pengguna.
+
+**Limitasi yang berulang:** Mayoritas penelitian masih bergantung pada data subjektif (opini pengguna) melalui kuesioner dan belum ada yang melakukan pengujian performa objektif secara empiris seperti menghitung durasi waktu penyelesaian tugas (*time-on-task*) menggunakan stopwatch.
 
 ---
 
@@ -125,13 +132,18 @@ Berdasarkan tabel di Latihan 1, identifikasi gap.
 
 | Jenis Gap | Ditemukan? | Gap Statement |
 |-----------|-----------|---------------|
-| Performance Gap | [ ] Ya / [ ] Tidak | *Contoh: Akurasi turun di bawah 80% untuk kelas minoritas* |
-| Method Gap | [ ] Ya / [ ] Tidak | |
+| Performance Gap | [X] Ya / [ ] Tidak | Belum ada data kuantitatif yang membuktikan apakah skor efisiensi tinggi pada kuesioner berbanding lurus dengan kecepatan waktu transaksi (detik). |
+| Method Gap | [X] Ya / [ ] Tidak | Seluruh referensi menggunakan metode subjektif (UEQ/SUS/Heuristic); belum ada yang menerapkan *direct observation* dengan metrik *Time on Task*. |
 | Data Gap | [ ] Ya / [ ] Tidak | |
-| Context Gap | [ ] Ya / [ ] Tidak | |
+| Context Gap | [X] Ya / [ ] Tidak | Belum ada evaluasi komparatif yang spesifik menguji aplikasi GoPay setelah rilis sebagai aplikasi mandiri (*stand-alone*) dibandingkan dengan model *super-app* DANA. |
 
-**Gap utama yang dipilih:** _____________________________
+**Gap utama yang dipilih:** Method & Performance Gap
+
 **Mengapa gap ini penting (bukan sekadar "belum ada yang meneliti")?**
+> Gap ini penting karena efisiensi merupakan variabel krusial dalam aplikasi finansial yang sangat memengaruhi kepuasan pengguna. Mengandalkan data persepsi (kuesioner) saja memiliki risiko bias yang tinggi. Dengan menutup *Method Gap* melalui pengukuran waktu nyata (*stopwatch*), riset ini akan memberikan validasi empiris apakah desain aplikasi *stand-alone* (GoPay) secara teknis memang lebih efisien daripada desain *super-app* (DANA), ataukah hanya sekadar "terasa" lebih cepat oleh pengguna. Data ini akan menjadi acuan objektif bagi pengembang dalam mengoptimalkan alur transaksi.
+
+---
+
 > ___________________________________________________
 
 ---
@@ -142,11 +154,11 @@ Pilih 2 baseline dari literatur yang sudah dibaca.
 
 | # | Baseline | Mengapa Relevan | Mengapa Representatif | Apakah SOTA? | Sumber |
 |---|----------|----------------|----------------------|-------------|--------|
-| 1 | *Contoh: RF + TF-IDF* | *Task sama: klasifikasi teks* | *Dipakai 6 dari 10 paper* | *Bukan, tapi common practice* | *Lee et al., 2022* |
-| 2 | | | | | |
+| 1 | Evaluasi UEQ (User Experience Questionnaire) | Mengukur variabel efisiensi berdasarkan persepsi pengguna. | Digunakan oleh mayoritas peneliti e-wallet (3 dari 5 paper). | Ya (Terbaru 2025) | Angga Permana (2025) |
+| 2 | Usability Testing (Model Nielsen) | Menyediakan framework standar untuk mengukur komponen Efficiency. | Merupakan standar baku dalam pengujian usability aplikasi. | Ya (Terbaru 2024) | Y. E. Achyani (2024) |
 
-**Apakah pemilihan baseline ini bisa dianggap straw man?** [ ] Ya / [ ] Tidak
-> Justifikasi: ________________________________________
+**Apakah pemilihan baseline ini bisa dianggap straw man?** [ ] Ya / [X] Tidak
+> Justifikasi: Pemilihan baseline ini bukan *straw man* karena kedua referensi tersebut merupakan penelitian terbaru (State-of-the-Art) tahun 2024-2025 yang menggunakan metode standar industri dan akademik. Riset saya tidak membandingkan dengan metode yang lemah, melainkan mencoba melengkapi (augmentasi) hasil baseline tersebut dengan data stopwatch yang lebih presisi.
 
 ---
 
@@ -155,5 +167,8 @@ Pilih 2 baseline dari literatur yang sudah dibaca.
 > Apa perbedaan antara "belum ada yang meneliti ini" (klaim tanpa bukti) dengan research gap yang valid? Bagaimana cara membuktikan bahwa sebuah gap benar-benar ada?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Klaim "belum ada yang meneliti" seringkali hanya asumsi pribadi tanpa dasar kuat, sedangkan *research gap* yang valid adalah kesenjangan pengetahuan yang ditemukan setelah melakukan tinjauan literatur secara sistematis. Gap yang valid didasarkan pada bukti bahwa penelitian sebelumnya memiliki batasan (limitasi) tertentu, seperti keterbatasan metode, data, atau konteks.
+> 
+> Cara membuktikan bahwa sebuah gap benar-benar ada adalah dengan menyusun **Literature Matrix (concept-centric)**. Melalui tabel tersebut, kita bisa memetakan secara hitam di atas putih bahwa meskipun topik tersebut sudah banyak dibahas, terdapat aspek spesifik (seperti pengukuran waktu teknis/stopwatch) yang secara konsisten belum disentuh oleh peneliti-peneliti sebelumnya. Bukti pencarian di database (seperti Google Scholar) dengan query yang relevan juga menjadi pendukung kuat bahwa gap tersebut memang nyata dan layak untuk diteliti.
+
+---

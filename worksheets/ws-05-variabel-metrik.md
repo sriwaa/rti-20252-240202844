@@ -66,19 +66,19 @@ Metrik harus ditentukan **sebelum** eksperimen. Memilih metrik setelah melihat d
 ```
 VARIABLE & METRIC DEFINITION
 
-Research Question: ____________________
+Research Question: Apakah terdapat perbedaan signifikan pada rata-rata durasi waktu transaksi (Time-on-Task) antara aplikasi GoPay (stand-alone) dan aplikasi DANA (super app) menggunakan perangkat terkontrol pada mahasiswa Universitas Putra Bangsa?
 
 | Variabel | Tipe | Konsep | Metrik | Skala | Satuan | Cara Mengukur | Justifikasi |
 |----------|------|--------|--------|-------|--------|---------------|-------------|
-|          | IV   |        |        |       |        |               |             |
-|          | DV   |        |        |       |        |               |             |
-|          | CV   |        |        |       |        |               |             |
+| Model Arsitektur Aplikasi | IV | Jenis struktur layanan e-wallet | Kategori: Stand-alone vs Super App | Nominal | - | Membedakan subjek uji antara GoPay dan DANA. | Merupakan variabel bebas yang dimanipulasi untuk melihat pengaruhnya. |
+| Efisiensi Waktu | DV | Kecepatan interaksi pengguna | Time-on-Task (ToT) | Ratio | Detik (s) | Stopwatch digital (mulai dari klik icon aplikasi hingga kamera QRIS aktif). | Metrik standar efisiensi objektif dalam Human-Computer Interaction (HCI). |
+| Spesifikasi Perangkat | CV | Performa Hardware & Koneksi | Satu unit smartphone yang identik | Nominal | - | Menggunakan 1 HP yang sama untuk seluruh responden. | Menghindari bias perbedaan kecepatan RAM/prosesor antar device responden. |
 
 Alignment Check:
   RQ → Concept → Variable → Metric → Data → Result
-  [ ] Setiap langkah terdokumentasi
-  [ ] Tidak ada "lompatan logis"
-  [ ] Metrik mengukur apa yang dimaksud (construct validity)
+  [X] Setiap langkah terdokumentasi
+  [X] Tidak ada "lompatan logis"
+  [X] Metrik mengukur apa yang dimaksud (construct validity)
 ```
 
 ---
@@ -87,16 +87,16 @@ Alignment Check:
 
 Gunakan RQ dari WS-04. Definisikan variabel dan metriknya.
 
-**RQ:** __________________________________________________
+**RQ:** Apakah terdapat perbedaan signifikan pada rata-rata durasi waktu transaksi (Time-on-Task) antara aplikasi GoPay (stand-alone) dan aplikasi DANA (super app) menggunakan perangkat terkontrol pada mahasiswa?
 
 | Variabel | Tipe | Konsep Abstrak | Metrik Konkret | Skala (NOIR) | Satuan |
 |----------|------|---------------|----------------|-------------|--------|
-| *Contoh: Jenis model* | *IV* | *Pendekatan klasifikasi* | *Categorical: CNN vs RF* | *Nominal* | *—* |
-| | DV | | | | |
-| | CV | | | | |
+| Model Aplikasi | IV | Arsitektur Layanan | Kategori: GoPay vs DANA | Nominal | — |
+| Efisiensi | DV | Kecepatan Interaksi | Time-on-Task (ToT) | Ratio | Detik (s) |
+| Perangkat | CV | Performa Hardware | Spesifikasi HP tunggal | Nominal | — |
 
-**Apakah ada lompatan logis dalam rantai?** [ ] Ya / [ ] Tidak
-> Jika ya, di mana? ____________________________________
+**Apakah ada lompatan logis dalam rantai?** [ ] Ya / [X] Tidak
+> Jika ya, di mana? Tidak ada. Konsep "efisiensi" dioperasionalisasikan secara langsung menjadi durasi waktu (detik) yang merupakan standar pengukuran performa teknis dalam pengujian usability (ISO 9241-11).
 
 ---
 
@@ -106,15 +106,15 @@ Evaluasi metrik DV yang dipilih di Latihan 1 menggunakan 3 kriteria.
 
 | Kriteria | Skor (1-5) | Justifikasi |
 |----------|-----------|-------------|
-| Representative | *Contoh: 4 — F1-Score mewakili keseimbangan precision-recall* | |
-| Sensitive | | |
-| Feasible | | |
+| Representative | 5 | Time-on-Task (ToT) secara langsung mewakili konsep efisiensi dalam penyelesaian tugas spesifik (transaksi QRIS). |
+| Sensitive | 4 | Stopwatch mampu menangkap perbedaan waktu yang sangat kecil (milidetik) antara dua alur UI yang berbeda. |
+| Feasible | 5 | Sangat mudah dikumpulkan menggunakan alat ukur standar tanpa memerlukan biaya tambahan atau perangkat lunak mahal. |
 
-**Apakah perlu secondary metric?** [ ] Ya / [ ] Tidak
-> Jika ya, apa dan mengapa? _____________________________
+**Apakah perlu secondary metric?** [X] Ya / [ ] Tidak
+> Jika ya, apa dan mengapa? **Success Rate (Berhasil/Gagal)**. Metrik ini penting untuk memastikan bahwa responden tidak hanya cepat dalam menekan tombol, tetapi benar-benar sampai ke tujuan yang benar (halaman scan QRIS).
 
 **Contoh kasus ceiling effect untuk metrik ini:**
-> ___________________________________________________
+> Jika kedua aplikasi meletakkan fitur QRIS di tombol fisik atau gesture yang sangat instan, maka waktu yang dihasilkan akan sangat cepat (misal: semuanya 0.5 detik). Akibatnya, metrik waktu tidak lagi sensitif untuk menunjukkan perbedaan efisiensi antar kedua desain.
 
 ---
 
@@ -122,12 +122,13 @@ Evaluasi metrik DV yang dipilih di Latihan 1 menggunakan 3 kriteria.
 
 Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualitas data.
 
+
 | Dimensi | Pertanyaan | Jawaban | Strategi Mitigasi |
 |---------|-----------|---------|------------------|
-| Completeness | *Apakah semua data point terkumpul?* | | |
-| Consistency | *Apakah ada kontradiksi internal?* | | |
-| Validity | *Apakah benar-benar mengukur yang dimaksud?* | | |
-| Representativeness | *Apakah sampel mewakili populasi target?* | | |
+| Completeness | Apakah semua data point terkumpul? | Potensi data hilang jika responden membatalkan tugas di tengah jalan. | Memberikan briefing yang jelas di awal dan memastikan koneksi internet stabil sebelum tes dimulai. |
+| Consistency | Apakah ada kontradiksi internal? | Ada risiko variasi waktu akibat faktor human error (salah klik karena grogi). | Memberikan waktu uji coba (trial) selama 1 menit agar responden terbiasa dengan perangkat uji. |
+| Validity | Apakah benar-benar mengukur yang dimaksud? | Ya, durasi waktu akses QRIS secara valid mengukur efisiensi navigasi UI. | Menetapkan titik mulai (saat icon ditekan) dan titik henti (kamera scan aktif) yang seragam di setiap tes. |
+| Representativeness | Apakah sampel mewakili populasi target? | Ya, selama sampel mencakup berbagai angkatan mahasiswa di UPB. | Melakukan teknik sampling di area publik kampus (kantin/perpustakaan) pada jam istirahat. |
 
 ---
 
@@ -136,5 +137,7 @@ Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualita
 > Mengapa memilih metrik setelah melihat data dianggap p-hacking? Apa bedanya dengan eksplorasi data yang sah?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Memilih metrik setelah melihat data dianggap **p-hacking** karena peneliti secara tidak jujur hanya memilih metrik yang memberikan hasil "bagus" atau signifikan secara statistik demi memvalidasi hipotesisnya. Hal ini mencederai integritas ilmiah karena hasil riset menjadi bias dan tidak objektif.
+>
+> Perbedaannya dengan **eksplorasi data yang sah** terletak pada tujuannya. Eksplorasi data dilakukan untuk mencari wawasan atau pola baru tanpa mengklaimnya sebagai pembuktian hipotesis utama yang sudah ditentukan di awal. Temuan eksplorasi biasanya digunakan sebagai dasar untuk riset di masa depan, bukan sebagai kesimpulan final dari penelitian saat ini.
+

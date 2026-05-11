@@ -87,7 +87,6 @@ Input data: Skenario tugas tunggal (Akses fitur Scan QRIS).
 Parameter: 1 Unit Smartphone Samsung A55, 40 Responden Mahasiswa, Data Seluler.
 Output format: Log durasi waktu (detik/seconds).
 ```
-
 ---
 
 ## Latihan 1 — Variable-to-Component Mapping
@@ -102,7 +101,6 @@ Output format: Log durasi waktu (detik/seconds).
 
 **Apakah semua variabel bisa di-map?** [X] Ya / [ ] Tidak
 > **Jika tidak, komponen apa yang perlu ditambahkan?** Semua variabel sudah terpetakan secara lengkap ke dalam komponen setup eksperimen.
-
 ---
 
 ## Latihan 2 — 4 Prinsip Desain

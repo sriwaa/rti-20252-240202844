@@ -67,77 +67,71 @@ Jika variabel tidak bisa di-map ke komponen apapun → arsitektur perlu didesain
 ```
 SYSTEM-EXPERIMENT MAPPING
 
-Research Question: ____________________
+Research Question: Apakah terdapat perbedaan signifikan pada rata-rata durasi waktu transaksi (Time-on-Task) antara aplikasi GoPay (stand-alone) dan aplikasi DANA (super app) menggunakan perangkat terkontrol pada mahasiswa Universitas Putra Bangsa?
 
 Variable → Component Mapping:
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi/Pengukuran |
-|----------|------|-----------------|---------------------------|
-|          | IV   |                 |                           |
-|          | DV   |                 |                           |
-|          | CV   |                 |                           |
+| :--- | :--- | :--- | :--- |
+| Model Arsitektur Aplikasi | IV | App Interface (GoPay vs DANA) | Swapping/berpindah antar subjek aplikasi pada task yang identik. |
+| Efisiensi Waktu | DV | Data Logger (Manual Stopwatch) | Mencatat durasi dari saat icon diklik hingga kamera QRIS aktif. |
+| Spesifikasi Perangkat | CV | Testing Device & Network | Mengunci penggunaan 1 HP identik dan 1 provider internet tetap. |
 
 4 Prinsip Desain:
-  [ ] Traceability — Setiap komponen bisa ditelusuri ke variabel
-  [ ] Variable Isolation — IV bisa diubah tanpa mengubah CV
-  [ ] Measurement Integration — Pengukuran DV built-in
-  [ ] Reproducibility — Setup bisa direkonstruksi
+[x] Traceability — Setiap komponen (Aplikasi, Stopwatch, HP) melayani variabel riset.
+[x] Variable Isolation — IV (Aplikasi) bisa diganti tanpa mengubah metode ukur/perangkat (CV).
+[x] Measurement Integration — Pengukuran DV (detik) sudah menyatu dalam alur pengujian.
+[x] Reproducibility — Prosedur pengujian bisa direkonstruksi dengan hasil yang konsisten.
 
 Experimental Setup:
-  Input data     : ____________________
-  Parameter      : ____________________
-  Output format  : ____________________
+Input data: Skenario tugas tunggal (Akses fitur Scan QRIS).
+Parameter: 1 Unit Smartphone, 40 Responden Mahasiswa.
+Output format: Log durasi waktu (detik/seconds).
 ```
 
 ---
 
 ## Latihan 1 — Variable-to-Component Mapping
 
-Gunakan RQ dan variabel dari WS-05. Petakan ke komponen sistem.
-
-**RQ:** __________________________________________________
+**RQ:** Apakah terdapat perbedaan signifikan pada rata-rata durasi waktu transaksi (Time-on-Task) antara aplikasi GoPay (stand-alone) dan aplikasi DANA (super app) menggunakan perangkat terkontrol pada mahasiswa?
 
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi / Pengukuran |
-|----------|------|-----------------|---------------------------|
-| *Contoh: Jenis model* | *IV* | *Modul classifier (swap RF ↔ CNN)* | *Ganti config `model_type`* |
-| | DV | | |
-| | CV | | |
+| :--- | :--- | :--- | :--- |
+| Arsitektur Layanan | IV | App Environment (GoPay vs DANA) | Menukar instalasi aplikasi yang aktif digunakan responden. |
+| Kecepatan Interaksi | DV | Time-on-Task Measurement Tool | Mengukur durasi penyelesaian tugas menggunakan stopwatch digital. |
+| Performa Hardware | CV | Controlled Hardware (Device Tunggal) | Menggunakan spesifikasi RAM/Prosesor yang sama untuk semua tes. |
 
-**Apakah semua variabel bisa di-map?** [ ] Ya / [ ] Tidak
-> Jika tidak, komponen apa yang perlu ditambahkan? _________
+**Apakah semua variabel bisa di-map?** [X] Ya / [ ] Tidak
+> **Jika tidak, komponen apa yang perlu ditambahkan?** Semua variabel sudah terpetakan secara lengkap ke dalam komponen setup eksperimen.
 
 ---
 
 ## Latihan 2 — 4 Prinsip Desain
 
-Evaluasi desain sistem terhadap 4 prinsip.
-
 | Prinsip | Status | Bukti / Penjelasan |
-|---------|--------|-------------------|
-| Traceability | *Contoh: ✅ — setiap modul punya label variabel* | |
-| Modularity | | |
-| Controllability | | |
-| Measurability | | |
+| :--- | :--- | :--- |
+| Traceability | ✅ | Komponen aplikasi mewakili IV (model arsitektur) dan stopwatch mewakili DV (efisiensi). |
+| Modularity | ✅ | Kita bisa mengganti GoPay dengan aplikasi lain (misal: OVO) tanpa merubah alat ukur stopwatch. |
+| Controllability | ✅ | Semua parameter hardware dan jaringan dikunci dalam satu setup perangkat yang tetap. |
+| Measurability | ✅ | Hasil akhir berupa angka (detik) yang objektif, bukan sekadar opini responden. |
 
-**Prinsip mana yang paling sulit dipenuhi?** _______________
+**Prinsip mana yang paling sulit dipenuhi?** Controllability (Kontrol Lingkungan).
 **Strategi untuk mengatasinya:**
-> ___________________________________________________
+> Melakukan clear cache pada aplikasi sebelum pengujian dimulai dan memastikan koneksi internet berada pada bandwidth yang stabil selama sesi eksperimen.
 
 ---
 
 ## Latihan 3 — Ablation Study Planning
 
-Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
+| Kondisi | Komponen A (Splash Screen) | Komponen B (Home Loading) | Komponen C (Navigasi Tombol) | Hasil yang Diharapkan |
+| :--- | :--- | :--- | :--- | :--- |
+| Full | ✅ Aktif | ✅ Aktif | ✅ Aktif | Baseline waktu transaksi total. |
+| – A | ❌ (Tanpa Iklan) | ✅ | ✅ | Melihat pengaruh beban visual/iklan awal terhadap waktu. |
+| – B | ✅ | ❌ (Pre-loaded) | ✅ | Menguji kecepatan murni interaksi UI tanpa hambatan server. |
+| – C | ✅ | ✅ | ❌ (Shortcut/Widget) | Mengetahui efisiensi jika alur navigasi dipangkas. |
 
-| Kondisi | Komponen A | Komponen B | Komponen C | Hasil yang Diharapkan |
-|---------|-----------|-----------|-----------|----------------------|
-| Full | *Contoh: ✅ CNN* | *Contoh: ✅ Temporal features* | *Contoh: ✅ Z-score norm* | *Baseline penuh* |
-| – A | ❌ (ganti RF) | ✅ | ✅ | |
-| – B | ✅ | ❌ (tanpa temporal) | ✅ | |
-| – C | ✅ | ✅ | ❌ (tanpa normalisasi) | |
-
-**Komponen mana yang diprediksi paling berkontribusi?** _____
+**Komponen mana yang diprediksi paling berkontribusi?** Komponen B (Home Loading).
 **Mengapa?**
-> ___________________________________________________
+> Karena pada Super App (DANA), sistem memuat lebih banyak aset dan menu secara bersamaan di halaman utama dibanding Stand-alone (GoPay), sehingga loading home menjadi titik hambat terbesar.
 
 ---
 
@@ -146,5 +140,7 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 > Apa risiko jika sistem dibangun seperti produk (monolitik, fitur lengkap) lalu baru dilakukan eksperimen? Mengapa arsitektur modular penting untuk riset?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Risikonya adalah munculnya *Confounding Variables* (variabel pengganggu). Jika sistem bersifat monolitik, kita tidak akan tahu secara pasti apakah lambatnya transaksi disebabkan oleh desain UI, banyaknya fitur iklan, atau arsitektur informasinya. Kita tidak bisa mengisolasi penyebab utamanya.
+
+> Arsitektur modular penting untuk riset agar kita bisa melakukan **Isolasi Variabel**. Dengan modularitas, kita bisa mengubah satu bagian saja (IV) tanpa mengganggu bagian lain (CV), sehingga kesimpulan yang diambil benar-benar akurat dan membuktikan hubungan sebab-akibat yang jelas.
+

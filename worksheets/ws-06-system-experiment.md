@@ -74,17 +74,17 @@ Variable → Component Mapping:
 | :--- | :--- | :--- | :--- |
 | Model Arsitektur Aplikasi | IV | App Interface (GoPay vs DANA) | Swapping/berpindah antar subjek aplikasi pada task yang identik. |
 | Efisiensi Waktu | DV | Data Logger (Manual Stopwatch) | Mencatat durasi dari saat icon diklik hingga kamera QRIS aktif. |
-| Spesifikasi Perangkat | CV | Testing Device & Network | Mengunci penggunaan 1 HP identik dan 1 provider internet tetap. |
+| Spesifikasi Perangkat | CV | Testing Device & Network | Mengunci penggunaan 1 HP Samsung A55 dan Data Seluler tetap. |
 
 4 Prinsip Desain:
 [x] Traceability — Setiap komponen (Aplikasi, Stopwatch, HP) melayani variabel riset.
 [x] Variable Isolation — IV (Aplikasi) bisa diganti tanpa mengubah metode ukur/perangkat (CV).
-[x] Measurement Integration — Pengukuran DV (detik) sudah menyatu dalam alur pengujian.
-[x] Reproducibility — Prosedur pengujian bisa direkonstruksi dengan hasil yang konsisten.
+[x] Measurement Integration — Pengukuran DV (detik) sudah menyatu dalam alur pengujian menggunakan stopwatch.
+[x] Reproducibility — Prosedur pengujian bisa direkonstruksi dengan hasil yang konsisten bagi 40 responden mahasiswa UPB.
 
 Experimental Setup:
 Input data: Skenario tugas tunggal (Akses fitur Scan QRIS).
-Parameter: 1 Unit Smartphone, 40 Responden Mahasiswa.
+Parameter: 1 Unit Smartphone Samsung A55, 40 Responden Mahasiswa, Data Seluler.
 Output format: Log durasi waktu (detik/seconds).
 ```
 
@@ -116,7 +116,7 @@ Output format: Log durasi waktu (detik/seconds).
 
 **Prinsip mana yang paling sulit dipenuhi?** Controllability (Kontrol Lingkungan).
 **Strategi untuk mengatasinya:**
-> Melakukan clear cache pada aplikasi sebelum pengujian dimulai dan memastikan koneksi internet berada pada bandwidth yang stabil selama sesi eksperimen.
+> Memastikan kuota seluler penuh dan sinyal berada pada bar maksimal, serta menutup semua aplikasi latar belakang sebelum pengujian tiap responden dimulai.
 
 ---
 

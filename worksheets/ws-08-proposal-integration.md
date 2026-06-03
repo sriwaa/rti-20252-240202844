@@ -145,6 +145,7 @@ Evaluasi proposal mini menggunakan rubrik.
 **Bagian termudah:** Proses penentuan topik riset pada **WS-01 (Introduction)** dan merumuskan *Research Question* (RQ) pada **WS-04 (RQ & Hypothesis)**. Bagian ini terasa paling mudah karena fenomena menumpuknya fitur pada antarmuka *Super App* (DANA) yang membuat transaksi terasa lebih berat dan membingungkan adalah masalah nyata yang sangat sering saya rasakan langsung dalam aktivitas sehari-hari di lingkungan kampus UPB Kebumen.
 
 **Bagian tersulit:** Merancang komponen metodologi kontrol pada **WS-06 (System Component)** dan memetakan rancangan eksperimen pada **WS-07 (Experimental Design)**. Bagian ini sangat sulit karena saya harus memikirkan cara mengunci seluruh potensi bias pengganggu secara ketat, seperti menyamakan spesifikasi perangkat fisik dengan memakai satu **HP milik peneliti** serta mengatur urutan pengujian agar memori motorik responden tidak memengaruhi keaslian data durasi detik yang keluar.
+
 **Yang akan dilakukan berbeda:**
 > Jika mengulang kembali proses dari awal semester, saya akan langsung menetapkan penggunaan satu perangkat kontrol tunggal (**HP milik peneliti**) sejak tahap perancangan instruksi tugas, serta langsung fokus mengadopsi metrik objektif *Time-on-Task* (ToT) daripada membuang waktu menganalisis metode kuesioner kualitatif subjektif yang rawan terhadap bias ingatan responden.
 

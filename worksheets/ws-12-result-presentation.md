@@ -65,44 +65,44 @@ Keduanya **saling melengkapi**:
 ```
 RESULT PRESENTATION PLAN
 
-Research Question : ____________________
-Metrik Utama      : ____________________
+Research Question : Apakah terdapat perbedaan durasi waktu (Time-on-Task) pembukaan fitur QRIS yang signifikan antara model aplikasi Stand-alone (GoPay) dan Super App (DANA) pada mahasiswa UPB Kebumen?
+Metrik Utama      : Time-on-Task (durasi waktu muat menu QRIS dalam satuan detik)
 
 Tabel Hasil:
-| Skenario | Metrik 1 (mean ± std) | Metrik 2 (mean ± std) | n |
-|----------|----------------------|----------------------|---|
-|          |                      |                      |   |
+| Skenario | Metrik 1 (mean ± std) | n |
+|---------- | ---------------------- | ---|
+| GoPay (Model Stand-alone) | 4.70 ± 0.69 detik | 40 |
+| DANA (Model Super App) | 6.07 ± 0.90 detik | 40 |
 
 Visualisasi yang Direncanakan:
 | # | Jenis Grafik | Pesan Utama | Metrik |
 |---|-------------|-------------|--------|
-| 1 |             |             |        |
-| 2 |             |             |        |
+| 1 | Bar Chart + Error Bar | Perbandingan nilai rata-rata (mean) durasi kecepatan pembukaan QRIS antara GoPay dan DANA. |Mean ± Standard Deviation|
+| 2 | Box Plot | Distribusi sebaran nilai minimum, kuartil, dan maksimum untuk melihat konsistensi performa di lapangan. | Seluruh nilai sebaran data 80 runs |
 
 Bias Check:
-  [ ] Y-axis mulai dari 0 (atau dijustifikasi)
-  [ ] Error bar/CI ditampilkan
-  [ ] Semua data disertakan (tidak cherry-picked)
-  [ ] Tidak menggunakan 3D tanpa alasan
+  [✓] Y-axis mulai dari 0 (atau dijustifikasi)
+  [✓] Error bar/CI ditampilkan
+  [✓] Semua data disertakan (tidak cherry-picked)
+  [✓] Tidak menggunakan 3D tanpa alasan
 ```
 
 ---
 
 ## Latihan 1 — Tabel Hasil
 
-Buat tabel hasil eksperimen Anda (boleh dengan data simulasi jika belum punya data riil).
+Buat tabel hasil eksperimen Anda (Menggunakan Data Riil Hasil Pengujian).
 
-| Skenario | Metrik 1 (mean ± std) | Metrik 2 (mean ± std) | n |
-|----------|----------------------|----------------------|---|
-| *Contoh: BERT-base* | *88.4 ± 1.2%* | *45.2 ± 3.1 min* | *10* |
-| | | | |
-| | | | |
+| Skenario | Durasi Kecepatan (mean ± std) | Rentang Nilai (Min - Maks) | n |
+|----------|-------------------------------|----------------------------|---|
+| GoPay (Model Stand-alone) | 4.70 ± 0.69 detik | 3.90 detik – 6.97 detik | 40 |
+| DANA (Model Super App) | 6.07 ± 0.90 detik | 4.55 detik – 8.33 detik | 40 |
 
 **Checklist tabel:**
-- [ ] Self-contained (judul jelas, satuan ada, N tercantum)
-- [ ] Mean ± std (bukan single number)
-- [ ] Diurutkan berdasarkan metrik utama
-- [ ] Format konsisten di semua baris
+- [✓] Self-contained (judul jelas, satuan ada, N tercantum)
+- [✓] Mean ± std (bukan single number)
+- [✓] Diurutkan berdasarkan metrik utama (GoPay yang tercepat ditaruh di atas)
+- [✓] Format konsisten di semua baris
 
 ---
 
@@ -112,9 +112,8 @@ Rencanakan 2-3 grafik untuk menyajikan data dari Latihan 1. Setiap grafik = satu
 
 | # | Jenis Grafik | Pesan | Data yang Digunakan |
 |---|-------------|-------|---------------------|
-| 1 | *Contoh: Bar chart + error bar* | *Perbandingan accuracy antar 3 model* | *Mean accuracy ± std* |
-| 2 | *Box plot* | *Distribusi F1 per model* | *Semua run F1* |
-| 3 | *Scatter plot* | *Trade-off accuracy vs training time* | *Mean accuracy vs mean time* |
+| 1 | Bar Chart + Error Bar | Memperlihatkan secara visual bahwa rata-rata (*mean*) durasi waktu muat fitur QRIS GoPay lebih cepat daripada DANA, lengkap dengan simpangan bakunya. | Rata-rata (*mean*) durasi waktu ± standar deviasi (*std*) dari GoPay dan DANA. |
+| 2 | Box Plot | Menunjukkan sebaran distribusi data dan rentang variasi waktu (nilai minimum, kuartil, nilai maksimum) untuk melihat konsistensi performa kedua aplikasi di lapangan. | Seluruh data mentah (80 data points) dari durasi waktu GoPay dan DANA. |
 
 ---
 
@@ -126,14 +125,14 @@ Evaluasi visualisasi berikut untuk bias (skenario dari contoh):
 
 | Pertanyaan | Jawaban |
 |-----------|---------|
-| Apakah Y-axis menyesatkan? | *Contoh: Ya — A terlihat 2× B padahal beda 0.4%* |
-| Apakah error bar ditampilkan? | |
-| Apakah semua kondisi ditampilkan? | |
-| Apa solusinya? | |
+| Apakah Y-axis menyesatkan? | Ya — Pemotongan sumbu Y (di mulai dari 90%) akan mendistorsi visual, membuat Metode A terlihat seolah-olah 2x lipat lebih tinggi dan jauh lebih unggul, padahal selisih aslinya hanya 0.4%. |
+| Apakah error bar ditampilkan? | Tidak ditampilkan, sehingga menyembunyikan tingkat variabilitas dan ketidakpastian sebaran data sampel tersebut. |
+| Apakah semua kondisi ditampilkan? | Ya, semua kondisi dari kedua metode (Metode A dan Metode B) sudah ditampilkan secara lengkap di dalam grafik. |
+| Apa solusinya? | Mengatur ulang sumbu Y agar wajib dimulai dari angka 0 (nol) supaya proporsi tinggi batang mencerminkan perbedaan yang jujur dan objektif secara visual. |
 
 **Evaluasi grafik Anda sendiri dari Latihan 2:**
-- [ ] Semua bias check lulus
-- [ ] Ada yang perlu diperbaiki: ____
+- [✓] Semua bias check lulus
+- [ ] Ada yang perlu diperbaiki: —
 
 ---
 
@@ -141,5 +140,6 @@ Evaluasi visualisasi berikut untuk bias (skenario dari contoh):
 
 > Mengapa tabel dan grafik keduanya diperlukan — tidak cukup salah satu saja? Pernahkah Anda membuat grafik yang (tanpa sengaja) menyesatkan?
 
-> ___________________________________________________
-> ___________________________________________________
+> Tabel dan grafik keduanya mutlak diperlukan karena fungsi penyajian data mereka saling melengkapi satu sama lain. Tabel sangat unggul dalam menyajikan presisi data berupa angka desimal murni yang lengkap dan mendetail, namun mata manusia akan kesulitan membaca pola atau tren makronya secara instan jika hanya melihat tumpukan angka tersebut. Sebaliknya, grafik sangat unggul dalam memperlihatkan perbandingan visual, sebaran distribusi, dan anomali data (seperti melihat perbedaan rata-rata kecepatan GoPay vs DANA) secara cepat dalam sekali pandang, tetapi grafik tidak bisa menyajikan ketepatan angka mentah secara mendetail. Oleh karena itu, menggunakan keduanya secara bersamaan akan memberikan pemahaman yang utuh, akurat, dan komprehensif bagi pembaca riset.
+
+> Saya pribadi berkomitmen penuh untuk menghindari pembuatan grafik yang menyesatkan dengan selalu menerapkan standar validasi formal, seperti memastikan sumbu Y selalu dimulai dari angka nol (0) agar proporsi visualnya jujur, serta selalu menyertakan komponen error bar/standar deviasi untuk menunjukkan variabilitas data di lapangan. Hal ini sangat penting agar hasil penelitian komparasi model aplikasi ini murni menyajikan fakta ilmiah yang objektif dan tepercaya tanpa adanya manipulasi visual yang tidak disengaja.

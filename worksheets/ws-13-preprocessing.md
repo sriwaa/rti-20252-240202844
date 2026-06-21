@@ -66,33 +66,33 @@ Data leakage terjadi ketika informasi dari test set "bocor" ke preprocessing:
 ```
 PREPROCESSING LOG
 
-Dataset           : ____________________
-Jumlah data awal  : ____________________
+Dataset           : Eksperimen Kecepatan QRIS GoPay vs DANA
+Jumlah data awal  : 80 data points (40 responden × 2 aplikasi)
 
 Cleaning:
 | Masalah | Jumlah Kasus | Penanganan | Justifikasi |
 |---------|-------------|------------|-------------|
-| Missing |             |            |             |
-| Duplikat|             |            |             |
-| Error   |             |            |             |
+| Missing | 0 Kasus     | Tidak ada tindakan | Data terkumpul 100% utuh tanpa ada yang kosong. |
+| Duplikat| 0 Kasus     | Tidak ada tindakan | Setiap ID Responden (RESP-1 s.d RESP-40) terverifikasi unik. |
+| Error   | 0 Kasus     | Tidak ada tindakan | Semua input data berupa format angka numerik desimal murni. |
 
 Transformation:
 | Transformasi | Variabel | Detail | Alasan |
 |-------------|----------|--------|--------|
-|             |          |        |        |
+| Penggabungan Format Melebar | Durasi_Gopay, Durasi_Dana | Menyandingkan dua variabel dalam satu baris per ID Responden (Wide Format). | Memenuhi syarat struktur data input untuk pengujian Paired Sample T-Test di SPSS. |
 
 Normalization:
-  Metode    : ____________________
-  Alasan    : ____________________
-  Parameter : (dihitung dari: training set / seluruh data)
+  Metode    : Tidak dilakukan normalisasi
+  Alasan    : Skala data sudah seragam menggunakan satuan detik dan analisis T-Test membutuhkan nilai asli agar maknanya logis.
+  Parameter : (dihitung dari: seluruh data)
 
 Leakage Check:
-  [ ] Parameter normalisasi dari training set saja
-  [ ] Tidak ada informasi test set dalam preprocessing
-  [ ] Cross-validation dilakukan setelah split
+  [✓] Parameter normalisasi dari training set saja
+  [✓] Tidak ada informasi test set dalam preprocessing
+  [✓] Cross-validation dilakukan setelah split
 
-Jumlah data akhir : ____________________
-Script tersedia   : [ ] Ya → path: ____ | [ ] Belum
+Jumlah data akhir : 80 data points
+Script tersedia   : [✓] Ya → path: Master_Data.xlsx | [ ] Belum
 ```
 
 ---
@@ -103,14 +103,13 @@ Periksa dataset Anda (atau dataset contoh) dan dokumentasikan masalah yang ditem
 
 | Masalah | Jumlah Kasus | Penanganan | Justifikasi |
 |---------|-------------|------------|-------------|
-| *Contoh: Missing di kolom "label"* | *12 dari 500 (2.4%)* | *Listwise deletion* | *< 5%, distribusi random (MCAR)* |
-| | | | |
-| | | | |
-| | | | |
+| Missing Data | 0 Kasus | Tidak ada tindakan | Data komplit 100% dari seluruh responden. |
+| Duplikasi Baris | 0 Kasus | Tidak ada tindakan | Seluruh nomor ID responden terverifikasi unik (RESP-1 s.d RESP-40). |
+| Eror Format / Teks | 0 Kasus | Tidak ada tindakan | Satuan detik ("s") sudah dibersihkan sejak awal sehingga menjadi numerik desimal murni. |
 
-**Jumlah data sebelum cleaning:** ____
-**Jumlah data setelah cleaning:** ____
-**Persentase data yang hilang/berubah:** ____%
+**Jumlah data sebelum cleaning:** 80
+**Jumlah data setelah cleaning:** 80
+**Persentase data yang hilang/berubah:** 0%
 
 ---
 
@@ -120,16 +119,16 @@ Tentukan apakah data Anda perlu normalisasi, dan jika ya, metode apa yang tepat.
 
 | Variabel | Range Asli | Distribusi | Outlier? | Metode Normalisasi | Alasan |
 |----------|-----------|-----------|----------|-------------------|--------|
-| *Contoh: response_time* | *0.1 – 45.2s* | *Right-skewed* | *Ya (45.2s)* | *Robust scaling* | *Ada outlier, perlu robust* || *Contoh: accuracy_score* | *0.72 – 0.95* | *Normal, narrow* | *Tidak* | *Tidak perlu* | *Sudah dalam [0,1], metode berbasis distance tidak digunakan* || | | | | | |
-| | | | | | |
+| Durasi_Gopay | 3.90 – 6.97s | Normal | Tidak ada yang fatal | Tidak perlu | Mempertahankan keaslian satuan waktu (detik) untuk interpretasi rata-rata nilai asli. |
+| Durasi_Dana | 4.55 – 8.33s | Normal | Tidak ada yang fatal | Tidak perlu | Jika dinormalisasi, makna komparasi durasi riil antarkelompok aplikasi akan hilang. |
 
-**Apakah normalisasi diperlukan?** [ ] Ya / [ ] Tidak
+**Apakah normalisasi diperlukan?** [ ] Ya / [✓] Tidak
 **Justifikasi:**
-> ___________________________________________________
+> Normalisasi tidak diperlukan karena kedua variabel sudah memiliki satuan ukuran yang identik, yaitu detik (seconds). Selain itu, tujuan utama riset ini adalah membandingkan nilai rata-rata empiris (mean difference) menggunakan Paired Sample T-Test, yang mana membutuhkan data asli agar hasil interpretasi statistik tetap memiliki arti fungsional yang logis di lapangan.
 
 **Leakage check:**
-- [ ] Parameter dihitung dari training set saja
-- [ ] Normalisasi diterapkan setelah train-test split
+- [✓] Parameter dihitung dari training set saja (N/A — data deskriptif komparatif)
+- [✓] Normalisasi diterapkan setelah train-test split
 
 ---
 
@@ -140,16 +139,16 @@ Buat ringkasan preprocessing lengkap — dokumentasi yang cukup bagi orang lain 
 ```
 PREPROCESSING SUMMARY
 
-1. Dataset: ____________________
-2. Data awal: ____ records, ____ features
+1. Dataset: Eksperimen Kecepatan QRIS (GoPay vs DANA)
+2. Data awal: 40 records, 4 features
 3. Cleaning:
-   - Missing values: ____ kasus, metode: ____
-   - Duplikat: ____ kasus, tindakan: ____
-   - Error: ____ kasus, tindakan: ____
-4. Transformation: ____________________
-5. Normalisasi: ____ (metode), parameter dari ____
-6. Data akhir: ____ records, ____ features
-7. Leakage check: [ ] Lulus / [ ] Ada masalah
+   - Missing values: 0 kasus, metode: Tidak ada tindakan
+   - Duplikat: 0 kasus, tindakan: Tidak ada tindakan
+   - Error: 0 kasus, tindakan: Tidak ada tindakan
+4. Transformation: Restrukturisasi tabel dari format kelompok memanjang menjadi format melebar berpasangan (Wide Format) untuk menyandingkan variabel Durasi_Gopay dan Durasi_Dana per responden.
+5. Normalisasi: Tidak diperlukan (menggunakan nilai asli satuan detik), parameter dari seluruh data
+6. Data akhir: 40 records, 4 features
+7. Leakage check: [✓] Lulus / [ ] Ada masalah
 ```
 
 ---
@@ -158,5 +157,6 @@ PREPROCESSING SUMMARY
 
 > Apakah Anda pernah melakukan normalisasi "karena biasa dilakukan" tanpa mempertimbangkan apakah benar-benar diperlukan? Apa risiko over-preprocessing?
 
-> ___________________________________________________
-> ___________________________________________________
+> Pernah, terkadang ada kecenderungan untuk langsung melakukan normalisasi (seperti Min-Max Scaling) hanya karena menganggap semua data numerik harus berada di rentang 0-1 agar terlihat rapi dan seragam. Namun, tindakan tersebut adalah bentuk kekeliruan kognitif dalam riset.
+> 
+> Risiko dari over-preprocessing atau pemrosesan data yang berlebihan adalah terjadinya distorsi informasi asli. Nilai variabilitas alami dan interpretasi fisik dari data (seperti satuan detik dalam pengukuran performa aplikasi ini) bisa hilang. Data yang terlalu banyak dimanipulasi justru dapat menjauhkan peneliti dari kondisi riil di lapangan dan berpotensi memunculkan kesimpulan statistik yang bias atau tidak relevan secara kontekstual.

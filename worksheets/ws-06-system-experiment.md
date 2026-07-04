@@ -43,6 +43,19 @@ Jika variabel tidak bisa di-map ke komponen apapun → arsitektur perlu didesain
 - **Configuration-driven** — Ubah config (YAML/JSON), bukan code
 - **Feature toggles** — On/off flag untuk ablation study
 
+  Contoh config YAML dengan feature toggles:
+  ```yaml
+  model:
+    type: cnn          # IV: ganti "rf" untuk kondisi baseline
+  features:
+    use_temporal: true  # toggle komponen temporal
+    use_normalization: true  # toggle preprocessing
+  experiment:
+    seed: 42
+    runs: 5
+  ```
+  Dengan pendekatan ini, berbeda kondisi eksperimen = berbeda satu baris config, **tanpa mengubah kode**.
+
 ### Research vs Engineering
 
 | Aspek | Engineering | Research |
@@ -127,7 +140,21 @@ Output format: Log durasi waktu (detik/seconds).
 | – B | ✅ | ❌ (Pre-loaded) | ✅ | Menguji kecepatan murni interaksi UI tanpa hambatan server. |
 | – C | ✅ | ✅ | ❌ (Shortcut/Widget) | Mengetahui efisiensi jika alur navigasi dipangkas. |
 
+<<<<<<< HEAD
 **Komponen mana yang diprediksi paling berkontribusi?** Komponen B (Home Loading).
+=======
+> **Panduan jumlah kondisi:** Untuk 3 komponen (A, B, C), kondisi minimal yang direkomendasikan:
+> Full + (-A) + (-B) + (-C) = **4 kondisi dasar**. Jika waktu memungkinkan, tambahkan kombinasi ganda: (-A,-B), (-A,-C), (-B,-C) = **7 kondisi**. Sesuaikan dengan *computational cost* dan tenggat waktu penelitian.
+
+| Kondisi | Komponen A | Komponen B | Komponen C | Hasil yang Diharapkan |
+|---------|-----------|-----------|-----------|----------------------|
+| Full | *Contoh: ✅ CNN* | *Contoh: ✅ Temporal features* | *Contoh: ✅ Z-score norm* | *Baseline penuh* |
+| – A | ❌ (ganti RF) | ✅ | ✅ | |
+| – B | ✅ | ❌ (tanpa temporal) | ✅ | |
+| – C | ✅ | ✅ | ❌ (tanpa normalisasi) | |
+
+**Komponen mana yang diprediksi paling berkontribusi?** _____
+>>>>>>> ffac99b58491f20c5b78603a2b315eb77ca446fd
 **Mengapa?**
 > Karena pada Super App (DANA), sistem memuat lebih banyak aset dan menu secara bersamaan di halaman utama dibanding Stand-alone (GoPay), sehingga loading home menjadi titik hambat terbesar.
 
